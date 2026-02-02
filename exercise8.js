@@ -7,7 +7,7 @@ const library = {
     },
 
     findBooksByTitle(title) {
-        return this.books.filter(book => book.title === title) || null;
+        return this.books.filter(book => book.title === title);
     },
     listAllBooks() {
         return this.books.forEach(book => {
@@ -23,16 +23,16 @@ universityLibrary.addCourse = function(courseName, title, author, isbn) {
     this.addBook({title, author, isbn});
 };
 
-universityLibrary.addCourseBook("Computer Science 101", "Introduction to Programming", "Jane Doe", "1234567890");
-universityLibrary.addCourseBook("Mathematics 101", "Calculus I", "John Smith", "0987654321");
-universityLibrary.addCourseBook("1984", "Literature", "George Orwell", "0987254320");
+universityLibrary.addCourse("Computer Science 101", "Introduction to Programming", "Jane Doe", "1234567890");
+universityLibrary.addCourse("Mathematics 101", "Calculus I", "John Smith", "0987654321");
+universityLibrary.addCourse("Literature", "1984", "George Orwell", "0987254320");
 
 console.log("All Books in University Library:");
 universityLibrary.listAllBooks();
 
 console.log("\nBooks with title 'Calculus I':");
 const foundBooks = universityLibrary.findBooksByTitle("Calculus I");
-if (foundBooks) {
+if (foundBooks.length > 0) {
     foundBooks.forEach(book => {
         console.log(`Title: ${book.title}, Author: ${book.author}, ISBN: ${book.isbn}`);
     });
